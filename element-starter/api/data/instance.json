@@ -1,0 +1,23 @@
+{
+    "name": "service0",
+    "type": "stateless",
+    "resourceSpec": "2U4G",
+    "instanceNumber": 1,
+    "ports": [{
+        "port": 80,
+        "protocol": "TCP"
+    }, {
+        "port": 8080,
+        "protocol": "UDP"
+    }],
+    "containers": [{
+        "name": "container-0",
+        "image": "reg.qiniu.com/robotics/ros-installed:v3",
+        "workingDir": "/root",
+        "command": [],
+        "args": [],
+        "volumeMounts": [],
+        "configs": [],
+        "envs": []
+    }]
+}

@@ -1,0 +1,1 @@
+00 0 * * * cd /search/element-starter/api; sh init_token.sh; cd ..; sh renew.sh

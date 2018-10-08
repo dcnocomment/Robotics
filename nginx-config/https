@@ -1,0 +1,3 @@
+letsencrypt certonly -a webroot --webroot-path=/var/www/robotics/ -d roboslab.me
+/etc/letsencrypt/live/roboslab.me/fullchain.pem
+/etc/letsencrypt/live/roboslab.me/privkey.pem

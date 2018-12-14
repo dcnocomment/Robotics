@@ -1,1 +1,2 @@
 00 0 * * * cd /search/element-starter/api; sh init_token.sh; cd ..; sh renew.sh
+*/10 * * * * cd /search; sh loop_delete_instance.sh

@@ -12,7 +12,7 @@
     }],
     "containers": [{
         "name": "container-0",
-        "image": "reg.qiniu.com/robotics/ros-installed:v3",
+        "image": "reg.qiniu.com/robotics/ros-installed:latest",
         "workingDir": "/root",
         "command": [],
         "args": [],

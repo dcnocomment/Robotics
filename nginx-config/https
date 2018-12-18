@@ -1,3 +1,14 @@
 letsencrypt certonly -a webroot --webroot-path=/var/www/robotics/ -d roboslab.me
 /etc/letsencrypt/live/roboslab.me/fullchain.pem
 /etc/letsencrypt/live/roboslab.me/privkey.pem
+
+
+curl https://get.acme.sh | sh
+alias acme.sh=~/.acme.sh/acme.sh
+export GD_Key='dLDMrJqDRnH6_Wuu2nB4GEy7dpMqsekcoo8'
+export GD_Secret='Wuu88rTvibstvHjq6JDWCJ'
+acme.sh --issue --dns dns_gd -d roboslab.me -d www.roboslab.me
+
+
+#privatekey:  /root/.acme.sh/roboslab.me/roboslab.me.key
+#fullchain:  /root/.acme.sh/roboslab.me/fullchain.cer

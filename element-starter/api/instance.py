@@ -14,7 +14,7 @@ res["ports"] = [
 res["containers"] = [
 {
     "name": "container-0" + "-" + uuid, 
-    "image": "reg.qiniu.com/robotics/ros-installed:master", 
+    "image": "reg.qiniu.com/robotics/ros-installed:latest", 
     "workingDir": "/root", 
     "command": ["/bin/sh"],
     "args": ["init_ros.sh"],

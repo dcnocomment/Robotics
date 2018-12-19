@@ -3,6 +3,8 @@
         <el-button type="success" size="mini" icon="el-icon-caret-right"
             @click="try_start_instance()" v-show="!tryStartInstance && !instanceRunning">Start Your Workspace</el-button>
 
+        <editor v-model="content" @init="editorInit" lang="html" theme="chrome" width="500" height="100"></editor>
+
         <div id="platform_info" v-if="tryStartInstance" v-loading="!instanceRunning">
             <p>This would take up to 10min...</p>
             <p>Your workspace {{uuid}} {{instancePhase}}</p>
@@ -63,7 +65,9 @@ export default {
             uuid : "",
             tryStartInstance : false,
             instanceRunning : false,
-            instancePhase : ""
+            instancePhase : "",
+
+            content : "this is code"
         }
     },
     methods: {
@@ -124,7 +128,17 @@ export default {
         },
         frame_load() {
             this.frame_loading = false;
+        },
+        editorInit: function () {
+            require('brace/ext/language_tools') //language extension prerequsite...
+            require('brace/mode/html')                
+            require('brace/mode/javascript')    //language
+            require('brace/mode/less')
+            require('brace/theme/chrome')
+            require('brace/snippets/javascript') //snippet
         }
+    },
+    created(){
     },
     mounted(){
         this.is_log_in ();
@@ -138,9 +152,17 @@ export default {
         this.instanceRunning = true;
     },
     components: {
+        editor: require('vue2-ace-editor')
     }
 }
 </script>
 
 <style>
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 </style>

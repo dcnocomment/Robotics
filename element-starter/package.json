@@ -8,12 +8,14 @@
     "build": "rimraf dist && webpack -p --progress --hide-modules"
   },
   "dependencies": {
+    "ace-builds": "^1.4.2",
     "element-ui": "^2.3.4",
     "npm": "^6.4.1",
     "vue": "^2.5.16",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
     "vue-term": "^0.1.2",
+    "vue2-ace-editor": "0.0.12",
     "xterm": "^3.6.0"
   },
   "engines": {

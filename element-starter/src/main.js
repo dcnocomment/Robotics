@@ -7,7 +7,6 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VueResource from 'vue-resource';
 import http from 'vue-resource';
 
-
 Vue.use(ElementUI);
 Vue.use(VueResource);
 Vue.config.productionTip = false;

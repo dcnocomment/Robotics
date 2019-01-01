@@ -3,7 +3,7 @@
     <el-container>
         <el-header>
             <el-button type="success" size="mini" 
-                @click="start_wedding()" v-show="true">Happy Wedding</el-button>
+                @click="start_wedding()" v-show="false">Happy Wedding</el-button>
             <el-button type="primary" size="mini" 
                 @click="registerFormVisible = true" v-show="!isUserLoggedIn">Register</el-button>
             <el-button type="success" size="mini" 
@@ -173,22 +173,21 @@ export default {
         text-align: center;
     }
     .el-header{
-        margin-left : 4%;
-        margin-right : 4%;
-        margin-top : 30px;
-        margin-bottom : 5px;
+        padding: 0px;
         text-align: right;
+        margin-top: 30px;
+        margin-right: 30px;
+        margin-left: 30px;
     }
     .el-main{
-        margin-left : 4%;
-        margin-right : 4%;
+        padding: 0px;
         min-height : 800px;
     }
     .main_welcome_pic{
         width : 100%;
     }
     .el-footer{
-        margin-left : 4%;
-        margin-right : 4%;
+        padding: 0px;
+        text-align: right;
     }
 </style>

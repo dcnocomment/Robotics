@@ -1,7 +1,7 @@
 cloudtoken="cloudtoken"
 >$cloudtoken
 
-curl -X POST "https://keapi.qiniu.com/v1/usertoken" -d'{"name":"dcnocomment@gmail.com","password":"ducong19901023"}' | python parse_user.py >> $cloudtoken
+curl -X POST "https://keapi.qiniu.com/v1/usertoken" -d'{"name":"dcnocomment@gmail.com","password":"robot123456"}' | python parse_user.py >> $cloudtoken
 echo "project_name"'\t'"robotics" >> $cloudtoken
 echo "region"'\t'"xq" >> $cloudtoken
 PROJECT=`awk -F'\t' '{if($1=="project_name")printf $2}' $cloudtoken`

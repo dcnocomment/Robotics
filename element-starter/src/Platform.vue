@@ -3,11 +3,12 @@
         <el-button type="success" size="mini" icon="el-icon-caret-right"
             @click="try_start_instance()" v-show="!tryStartInstance && !instanceRunning">Start Your Workspace</el-button>
 
-        <div id="platform_info" v-if="tryStartInstance" v-loading="!instanceRunning">
+        <div id="platform_info" v-if="tryStartInstance" v-loading="!instanceRunning" element-loading-background="rgba(0, 0, 0, 0.8)">
             <el-button type="success" size="mini" icon="el-icon-tickets"
                 @click="open_console()" >Open Console</el-button>
             <el-button type="success" size="mini" icon="el-icon-refresh"
                 @click="refresh_emu()" >Refresh Emulator</el-button>
+            <p>Press the "Open Console" to start emulator and refresh it with "Refresh Emulator"</p>
         </div>
 
         <el-row>
@@ -42,7 +43,7 @@
             <el-col :span="8">
                 <div id="my-ace-editor"
                     v-if="loaded" v-loading="frame_loading">
-                    <editor v-model="content" @init="editorInit" lang="html" theme="chrome" width="500px" height="800px"></editor>
+                    <editor v-model="content" @init="editorInit" lang="python" theme="chrome" width="500px" height="800px"></editor>
                 </div>
             </el-col>
         </el-row>
@@ -51,6 +52,7 @@
             id = "jupyter"
             :src="src_jupyter"
             frameborder="0"
+            v-if="false"
         ></iframe>
 
 
@@ -76,7 +78,24 @@ export default {
             instanceRunning : false,
             instancePhase : "",
 
-            content : "this is code",
+            content : "import rospy \n\
+from std_msgs.msg import String \n\
+\n\
+def talker(): \n\
+    pub = rospy.Publisher('chatter', String, queue_size=10) \n\
+    rospy.init_node('talker', anonymous=True) \n\
+    rate = rospy.Rate(10) # 10hz \n\
+    while not rospy.is_shutdown(): \n\
+        hello_str = \"hello world %s\" % rospy.get_time() \n\
+        rospy.loginfo(hello_str) \n\
+        pub.publish(hello_str) \n\
+        rate.sleep() \n\
+\n\
+if __name__ == '__main__': \n\
+    try: \n\
+        talker() \n\
+    except rospy.ROSInterruptException: \n\
+        pass \n",
 
             src_jupyter : "https://121.52.239.207:8888/tree/ROS-JupyT"
         }
@@ -144,6 +163,7 @@ export default {
             require('brace/ext/language_tools') //language extension prerequsite...
             require('brace/mode/html')                
             require('brace/mode/javascript')    //language
+            require('brace/mode/python')    //language
             require('brace/mode/less')
             require('brace/theme/chrome')
             require('brace/snippets/javascript') //snippet
@@ -169,6 +189,9 @@ export default {
 </script>
 
 <style>
+    #platform_info{
+        min-height: 100px;
+    }
     #editor { 
         position: absolute;
         top: 0;
